@@ -38,17 +38,17 @@ export default function TextForm(props) {
         setText(newText.join(" "));
     }
 
-    let myStyle = {
-        color: 'white',
-        backgroundColor: 'black'
-    }
+    // let myStyle = {
+    //     color: 'black',
+    //     backgroundColor: 'white'
+    // }
     
     const [text, setText] = useState("");
     return (
         <>
 
-            <div className="container" style={myStyle}>
-                <div className="container">
+            <div className="container" style={{color: props.mode==='dark'?'white':'black'}}>
+                <div className="container" style={{color: props.mode==='dark'?'white':'black'}}>
                     <h1>{props.heading}</h1>
                     <div className="mb-3">
                         <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="3"></textarea>
@@ -62,10 +62,12 @@ export default function TextForm(props) {
 
 
                 </div>
-                <div className="container my-3">
+                <div className="container my-3" style={{color: props.mode==='dark'?'white':'black'}}>
                     <h1>Your text summary</h1>
                     <p>{text.split(" ").length} words and {text.length} characters</p>
                     <p>{0.008 * text.split(" ").length} Minutes read</p>
+                    <h2>Preview</h2>
+                    <p>{text.length>0?text:"Write something to preview it here"}</p>
                 </div>
             </div>
         </>
