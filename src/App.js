@@ -1,11 +1,11 @@
-// import logo from './logo.svg';
 import React, { useState } from 'react';
+import { Route, BrowserRouter, Routes } from 'react-router-dom'  
+
 import './App.css';
 // import About from './components/About';
 import Navbar from './components/Navbar';
-import TextForm from './components/TextForm';
-import Alert from './components/Alert';
-
+import Main from './components/Main';
+import About from './components/About';
 
 function App() {
 
@@ -20,15 +20,17 @@ function App() {
     }
     
   }
+
   return (
-    <>
-    <Navbar title="TextUtils" about="About" mode={mode} toggleMode={toggleMode}/>
-    <Alert alert="This is alert"/>
-    <div className="container my-3">
-    <TextForm heading="Enter the text to analyze" mode={mode}/>
-    </div>
-    {/* <About/> */}
-    </>
+    <BrowserRouter>
+      <Navbar title="TextUtils" about="About" mode={mode} toggleMode={toggleMode}/> 
+      <Routes>
+
+      <Route path= '/' element={<Main mode={mode} />} />
+      <Route path='/about' element={<About/>} /> 
+      </Routes>
+
+    </BrowserRouter>
     
   );
 }
