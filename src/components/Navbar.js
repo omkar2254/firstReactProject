@@ -1,8 +1,16 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'; // version 5.2.0
+
 import PropTypes from 'prop-types'
 
 
 export default function Navbar(props) {
+   const navigate = useNavigate()
+   
+    const handleAboutClick = () => {
+        navigate('about')
+    }
+
     return (
         <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
             <div className="container-fluid">
@@ -16,7 +24,7 @@ export default function Navbar(props) {
                             <a className="nav-link active" aria-current="page" href="/">Home</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/">{props.about}</a>
+                            <p className="nav-link" onClick={handleAboutClick}>{props.about}</p>
                         </li>
                     </ul>
                     
